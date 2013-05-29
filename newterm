@@ -1,0 +1,15 @@
+sub on_key_press {
+    my ($term, $event, $keysym, $octets) = @_;
+    if ($event->{state} == 5 and $event->{keycode} == 57) {
+        my $dir = readlink("/proc/" . $term->{child_pid} . "/cwd");
+        #print "$dir\n";
+        my $child = fork;
+        exec("urxvt", "-cd", "$dir") if not $child;
+    }
+}
+
+sub on_child_start {
+    my ($term, $pid) = @_;
+    $term->{child_pid} = $pid;
+    ()
+}
