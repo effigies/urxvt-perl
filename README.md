@@ -14,6 +14,8 @@ Toggle fullscreen for terminal
     URxvt.perl-ext-common: ...,fullscreen
     URxvt.keysym.F11: perl:fullscreen:switch
 
+Dependency: wmctrl
+
 newterm
 -------
 Open a new terminal in your current working directory, *a la* Ctrl-Shift-N in
